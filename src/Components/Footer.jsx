@@ -46,7 +46,12 @@ const Footer = () => {
                         }
                     </ul>
                 </div>
+
+             
             </div>
+              <div className='w-[50%] sm:pl-10'>
+                 <h3 className='text-center mt-10 text-3xl font-bold py-6 px-8 bg-neutral-800 rounded-xl'>Akshay Kumar</h3>
+              </div>
         </footer>
   )
 }
