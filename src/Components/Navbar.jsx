@@ -1,77 +1,83 @@
-import React, { use, useState } from 'react'
-import {Menu, X} from 'lucide-react'
-import logo from '../assets/logo.png'
-import {navItems} from '../work'
+import React, { use, useState } from "react";
+import { Menu, X } from "lucide-react";
+import logo from "../assets/logo.png";
+import { navItems } from "../work";
 
 const Navbar = () => {
+  const [mobileDrawOpen, setMobileDrawOpen] = useState(false);
 
-    const [mobileDrawOpen , setMobileDrawOpen] = useState(false);
-
-    const toggleNavbar = () => {
-        setMobileDrawOpen(!mobileDrawOpen)
-    }
+  const toggleNavbar = () => {
+    setMobileDrawOpen(!mobileDrawOpen);
+  };
 
   return (
-
-   <nav className="sticky top-0 z-50 py-3 
+    <nav
+      className="sticky top-0 z-50 py-3 
 bg-neutral-900/60 
 backdrop-blur-lg 
-border-b border-neutral-700">
+border-b border-neutral-700"
+    >
+      <div className="max-w-315 px-4 mx-auto relative text-sm ">
+        <div className="flex justify-between items-center">
+          <div className="flex items-center shrink-0">
+            <img className="h-10 w-10 mr-2" src={logo} alt="logo" />
+            <span className="text-xl tracking-tight text-white">Akshu</span>
+          </div>
 
-    <div className= 'max-w-315 px-4 mx-auto relative text-sm '>
+          <ul className="hidden lg:flex ml-14 space-x-12">
+            {navItems.map((item, index) => (
+              <li key={index}>
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))}
+          </ul>
 
-        <div className='flex justify-between items-center'>
-             <div className="flex items-center shrink-0">
-                <img className="h-10 w-10 mr-2" src={logo} alt="logo" />
-                    <span className="text-xl tracking-tight text-white">
-                        Akshu
-                    </span>
-                </div>
+          <div className="hidden lg:flex jsutify-center space-x-12 item-center">
+            <a href="#" className="py-2 px-3 border rounded-md">
+              {" "}
+              Sign In
+            </a>
+            <a
+              href="#"
+              className="bg-linear-to-r from-orange-500 to-orange-800 py-2 px-3 rounded-md"
+            >
+              Create an account
+            </a>
+          </div>
 
-
-                <ul className='hidden lg:flex ml-14 space-x-12'>
-                    {navItems.map( (item , index) => (
-                        <li key={index}>
-                            <a href={item.href}>{item.label}</a>
-                        </li>
-                    ))}
-                </ul>
-
-                <div className="hidden lg:flex jsutify-center space-x-12 item-center">
-                    <a href="#" className='py-2 px-3 border rounded-md'> Sign In</a>
-                    <a href="#" className='bg-linear-to-r from-orange-500 to-orange-800 py-2 px-3 rounded-md'>Create an account</a>
-                </div>
-
-                <div className="lg:hidden md:flex flex-col justify-end">
-                    <button onClick={toggleNavbar}>
-                        {mobileDrawOpen ? <X/> : <Menu/>}
-                    </button>
-
-                </div>
+          <div className="lg:hidden md:flex flex-col justify-end">
+            <button onClick={toggleNavbar}>
+              {mobileDrawOpen ? <X /> : <Menu />}
+            </button>
+          </div>
         </div>
-        
+
         {mobileDrawOpen && (
-            <div className='fixed right-0 z-20 bg-neutral-900 w-full p-12 flex flex-col justify-center items-center lg:hidden'>
-                
-                   <ul>
-                    { navItems.map( (item , index) => (
-                        <li key={index} className='py-4'>
-                            <a href={item.href}>{item.label}</a>
-                        </li>
-                    ))}
-                    </ul>
-                <div className="flex space-x-6 ">
-                    <a href="#" className='px-3 py-2 rounded-md border'>Sign</a>
+          <div className="fixed right-0 z-20 bg-neutral-900 w-full p-12 flex flex-col justify-center items-center lg:hidden">
+            <ul>
+              {navItems.map((item, index) => (
+                <li key={index} className="py-4">
+                  <a href={item.href}>{item.label}</a>
+                </li>
+              ))}
+            </ul>
+            <div className="flex space-x-6 ">
+              <a href="#" className="px-3 py-2 rounded-md border">
+                Sign
+              </a>
 
-                      <a href="#" className='bg-linear-to-r from-orange-500 to-orange-800 py-2 px-3 rounded-md'>Create an account</a>
-
-                </div>
+              <a
+                href="#"
+                className="bg-linear-to-r from-orange-500 to-orange-800 py-2 px-3 rounded-md"
+              >
+                Create an account
+              </a>
             </div>
+          </div>
         )}
-    </div>
+      </div>
+    </nav>
+  );
+};
 
-   </nav>
-  )
-}
-
-export default Navbar
+export default Navbar;

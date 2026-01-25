@@ -3,7 +3,7 @@ import { features } from "../work";
 
 const Feature = () => {
   return (
-    <div className="relative mt-20 border-b border-neutral-800 min-h-200">
+    <div className="relative mt-20  border-neutral-800 min-h-200">
       <div className="text-center">
         <span className="bg-neutral-900 text-orange-500 rounded-full h-6 text-lg font-medium px-2 py-1 uppercase">
           {" "}
